@@ -19,6 +19,8 @@ public class SystemUserErrorMsgs {
 		public void setErrorMsg() {
 			if (!userNameError.equals("") || !passwordError.equals("") || !cpasswordError.equals("") || !nameError.equals(""))
 				errorMsg="Please correct the following errors";
+			else
+				errorMsg="";
 		}
 	
 	
