@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import Maverick_parking.data.SystemUserDAO;
 import Maverick_parking.model.SystemUser;
+import Maverick_parking.model.SystemUserErrorMsgs;
 
 /**
  * Servlet implementation class SystemUserController
@@ -22,8 +23,7 @@ public class SystemUserController extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public SystemUserController() {
-        super();
-        // TODO Auto-generated constructor stub
+    	super();
     }
 
 	/**
@@ -43,13 +43,26 @@ public class SystemUserController extends HttpServlet {
 		SystemUser systemUser = new SystemUser();
 		if(request.getParameter("btnRegister")!=null){
 		systemUser.setUserName(request.getParameter("userName"));
+		SystemUserErrorMsgs errorMsgs = new SystemUserErrorMsgs();
+		systemUser.validateUserName(systemUser, errorMsgs);
 		systemUser.setPassword(request.getParameter("password"));
+		systemUser.validatePassword(systemUser, errorMsgs);
+		systemUser.setCpassword(request.getParameter("cpassword"));
+		systemUser.validateCpassword(systemUser, errorMsgs);
 		systemUser.setName(request.getParameter("name"));
+		systemUser.validateName(systemUser, errorMsgs);
 		systemUser.setRoleType(request.getParameter("roleType"));
 		session.setAttribute("systemUser", systemUser);
+		session.setAttribute("errorMsgs", errorMsgs);
+		if(errorMsgs.getErrorMsg().equals("")){
 		SystemUserDAO.insertUser(systemUser);
 		session.removeAttribute("systemUser");
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+		}
+		else{
+			getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
+			session.removeAttribute("errorMsgs");
+		}
 		}
 	}
 
