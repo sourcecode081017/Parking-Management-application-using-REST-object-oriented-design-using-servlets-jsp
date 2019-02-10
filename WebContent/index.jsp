@@ -14,7 +14,7 @@
 </div>
 <div class="container" align="center">
   <h2 class="display-4" align = "center">Login</h2>
-  <form action="SystemUserController" method="post">
+  <form action="LoginController" method="post">
   <div class="form-group">
     <label for="userName" align="left">User Name (Email)</label>
     <input type="email" class="form-control" name="userName" aria-describedby="emailHelp" placeholder="Enter email">
@@ -22,7 +22,8 @@
   <div class="form-group">
     <label for="password" align="left">Password</label>
     <input type="password" class="form-control" name="password" placeholder="Password" ><br>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <input name="userNamePasswordError" value="<c:out value='${errorMsgs.userNamePasswordError}'/>" type="text" style ="background-color: white; color: red; border: none; width: 800px" disabled="disabled" maxlength="60">
+    <button type="submit" class="btn btn-primary" name="btnLogin">Login</button>
   </div>
  </form>
   <div>
