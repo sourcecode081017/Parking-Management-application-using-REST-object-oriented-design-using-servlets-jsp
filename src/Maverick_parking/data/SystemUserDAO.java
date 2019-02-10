@@ -1,6 +1,7 @@
 package Maverick_parking.data;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 //import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,5 +37,70 @@ public class SystemUserDAO {
 		
 	}
 	}
-
+	public static boolean uniqueUserName(String userName){
+		Statement stmt = null;   
+		Connection conn = null;
+		try{
+			conn = SQLConnection.getDBConnection();  
+			stmt = conn.createStatement();
+			String query = "SELECT * FROM system_user WHERE user_name = '"+userName+"'";
+			ResultSet rs = stmt.executeQuery(query);
+			return rs.next();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				conn.close();
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}};
+			return true;
+	}
+	public static boolean validateLoginCredentials(String userName,String password){
+		Statement stmt = null;   
+		Connection conn = null;
+		try{
+			conn = SQLConnection.getDBConnection();  
+			stmt = conn.createStatement();
+			String query = "SELECT * FROM system_user WHERE user_name = '"+userName+"' AND password = '"+password+"'";
+			ResultSet rs = stmt.executeQuery(query);
+			return rs.next();
+			
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				conn.close();
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}};
+			return false;
+		
+	}
+	//This method to be called only after validating
+	public static String getRoleTypeFromDb(String userName){
+		Statement stmt = null;   
+		Connection conn = null;
+		String roleType = "";
+		try{
+			conn = SQLConnection.getDBConnection();  
+			stmt = conn.createStatement();
+			String query = "SELECT role_type FROM system_user WHERE user_name = '"+userName+"'";
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()){
+				roleType = rs.getString(1);
+			}
+		
+	}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+     return roleType;
+   }
 }
