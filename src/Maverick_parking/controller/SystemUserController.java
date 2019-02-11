@@ -57,11 +57,14 @@ public class SystemUserController extends HttpServlet {
 		if(errorMsgs.getErrorMsg().equals("")){
 		SystemUserDAO.insertUser(systemUser);
 		session.removeAttribute("systemUser");
+		session.removeAttribute("errorMsgs");
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 		else{
+			
 			getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 			session.removeAttribute("errorMsgs");
+			
 		}
 		}
 	}

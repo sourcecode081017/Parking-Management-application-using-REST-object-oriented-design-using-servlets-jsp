@@ -51,17 +51,18 @@ public class LoginController extends HttpServlet {
 			if(errorMsgs.getUserNamePasswordError().equals("")){
 				String roleType = login.getRoleType(login);
 				if(roleType.equals("User")){
+			getServletContext().getRequestDispatcher("/userHome.jsp").forward(request, response);
 					
 				}
 				else if(roleType.equals("Manager")){
+					getServletContext().getRequestDispatcher("/managerHome.jsp").forward(request, response);
 					
 				}
 				else if(roleType.equals("Admin")){
+					getServletContext().getRequestDispatcher("/adminHome.jsp").forward(request, response);
 					
 				}
-				else{
-					
-				}
+				
 			}
 			else{
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
