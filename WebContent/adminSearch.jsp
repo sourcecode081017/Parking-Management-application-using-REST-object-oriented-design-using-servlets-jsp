@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Admin Search for User</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body>
+<h1>Enter the Name of the User</h1>
+<form name="admin_searchForm" action="/Maverick_parking/AdminSearchController" method="post">
+    <label for="name">Name</label>
+    <input type="email" class="form-control" name="uname"  placeholder="Enter User Name">
+    <button type="submit" class="btn btn-primary" name="btnSearch">Search</button>
+    <input name="userNameError" value="<c:out value='${adminErrorMsgs.userNameError}'/>" type="text" style ="background-color: white; color: red; border: none; width: 800px" disabled="disabled" maxlength="60">
+  </form>
+</body>
+</html>
