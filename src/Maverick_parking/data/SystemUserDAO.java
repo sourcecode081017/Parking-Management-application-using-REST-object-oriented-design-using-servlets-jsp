@@ -15,7 +15,7 @@ public class SystemUserDAO {
 		Statement stmt = null;   
 		Connection conn = DBMgr.getDBConnection();
 		//Connection conn = null;
-		String insertUserQuery = "INSERT INTO system_user VALUES('"+systemUser.getUserName()
+		String insertUserQuery = "INSERT INTO system_user (user_name,password,name,role_type) VALUES('"+systemUser.getUserName()
 		+"',"+"'"+systemUser.getPassword()+"',"+"'"+systemUser.getName()+"',"+"'"
 				+systemUser.getRoleType()+"')";
 		try { 
