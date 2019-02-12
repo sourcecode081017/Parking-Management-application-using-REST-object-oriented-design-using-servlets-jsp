@@ -9,7 +9,9 @@
 </head>
 <body>
 <h1>The parking spot details  are</h1>
-
+<form action="LogoutController" method="post">
+<button type="submit" style="position:fixed;right:10px;top:5px" name="btnLogout">Logout</button>
+</form>
 <table border="1">
 <tr>
 <td>Parking Area Name	</td>&nbsp;

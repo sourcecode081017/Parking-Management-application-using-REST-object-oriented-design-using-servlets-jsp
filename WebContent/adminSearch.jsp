@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <body>
+<form action="LogoutController" method="post">
+<button type="submit" style="position:fixed;right:10px;top:5px" name="btnLogout">Logout</button>
+</form>
 <h1>Enter the Name of the User</h1>
 <form name="admin_searchForm" action="/Maverick_parking/AdminSearchController" method="post">
     <label for="name">Name</label>

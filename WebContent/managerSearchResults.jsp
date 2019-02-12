@@ -8,6 +8,9 @@
 <title>Manager Search Results</title>
 </head>
 <body>
+<form action="LogoutController" method="post">
+<button type="submit" style="position:fixed;right:10px;top:5px" name="btnLogout">Logout</button>
+</form>
 <h1>The user details  are</h1>
 
 <table>
